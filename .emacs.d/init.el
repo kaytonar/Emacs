@@ -21,10 +21,17 @@
   (evil-mode)
   (evil-set-undo-system 'undo-redo))
 
-(use-package dracula-theme)
+;; Theme
+(use-package solarized-theme)
+
+;;(use-package dracula-theme)
   ;; :ensure t
    ;; :config
-(load-theme 'dracula t)
+;;(load-theme 'dracula t)
+
+;; Load-theme
+
+(load-theme 'solarized-dark t)
    
    
 
