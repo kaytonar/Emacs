@@ -1,7 +1,7 @@
 (require 'package)
 (add-to-list 'package-archives '("GNU" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-;; (package-refresh-contents)
+(package-refresh-contents)
 (package-initialize)
 
 
@@ -49,22 +49,13 @@
    :config
    (beacon-mode 1))
 
+
 (use-package web-mode
-  :ensure t
-  :defer t
-  :config
-  (setq
-   web-mode-markup-indent-offset 2
-   web-mode-css-indent-offset 2
-   web-mode-code-indent-offset 2
-   web-mode-style-padding 2
-   web-mode-script-padding 2
-   web-mode-enable-auto-closing t
-   web-mode-enable-auto-opening t
-   web-mode-enable-auto-pairing t
-   web-mode-enable-auto-indentation t)
-  :mode
-  (".html$" "*.php$" "*.tsx"))
+  :mode (
+	 ("\\.js?\\'" . web-mode)
+         ("\\.html?\\'" . web-mode)
+         ("\\.css?\\'" . web-mode)
+         ))
 
 ;;Which-Key
 
@@ -77,13 +68,6 @@
     (set-face-attribute 'which-key-local-map-description-face nil 
        :weight 'bold)
   :ensure t)
-
-;;  Company
-(use-package company
-  :ensure t
-  :defer t
-  :config
-  (add-hook 'after-init-hook 'global-company-mode))
 
 ;; Helm	 
 (use-package helm-ag
@@ -105,11 +89,6 @@
     (global-set-key (kbd "M-y") 'helm-show-kill-ring)  ;; Show kill ring, pick something to paste
   :ensure t)
 
-(menu-bar-mode -1)
-
-(tool-bar-mode -1)
-
-(setq use-dialog-box nil)
 
 (use-package general
   :config
@@ -152,8 +131,7 @@
  '(custom-safe-themes
    '("05626f77b0c8c197c7e4a31d9783c4ec6e351d9624aa28bc15e7f6d6a6ebd926" default))
  '(package-selected-packages
-   '(helm rainbow-mode use-package peep-dired general evil dired-open all-the-icons-dired))
- '(warning-suppress-types '((use-package))))
+   '(helm rainbow-mode use-package peep-dired general evil dired-open all-the-icons-dired)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
